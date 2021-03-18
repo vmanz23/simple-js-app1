@@ -17,12 +17,12 @@ let pokemonRepository = (function () {
   };
 })();
 
-// IIFE function with  foreachloop // 
+// IIFE with foreach loop // 
 (function () {
   pokemonList.forEach(function(pokemon) {
       let pokemonName = pokemon.name
       let pokemonHeight = pokemon.height
-      // condition to add wow that's big if height is greater than 7
+      //conditional//
       if(pokemonHeight > 5) {
           document.write(pokemonName + ' : '+ pokemonHeight + ' - Wow, thats big!'); 
       } else {
