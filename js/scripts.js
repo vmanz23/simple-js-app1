@@ -1,32 +1,33 @@
-//defined variable//
-
+// array //
 let pokemonList = [
-  {name: "Gryados", height: 6.5, type: "flying,water"},
-  {name: "Mewtwo", height: 2, type: "psychic"},
-  {name: "Scyther", height:1.5, type:"bug, flying"}
-
+  { name: 'Gyrados', height: '6.5', types: ['flying', 'water']}, 
+  { name: 'Mewtwo', height: '2', types: ['psychic']}, 
+  { name: 'Scyther', height: '1.5', types: ['bug', 'flying']}, 
 ];
 
-//loop//
-for (let i=0; i <pokemonList.length; i++){
+// IIFE //
+let pokemonRepository = (function () {
+ return {
+    add: function(pokemon) {
+      pokemonList.push(pokemon);
+    },
+    getAll: function() {
+      return pokemonList;
+    }
+  };
+})();
 
-
-//conditional//
-if (pokemonList[i].height<5){
-document.write(pokemonList[i].name +pokemonList[i].height+ pokemonList[i].type)
-
-}
-}
-
-
-//conditonal with height emphasis//
-for (let i=0; i <pokemonList.length; i++){
-
-if (pokemonList[i].height>5){
-document.write(pokemonList[i].name +pokemonList[i].height+ pokemonList[i].type+"Wow, thats big!")
-
-
-}
-} 
-
-
+// IIFE function with  foreachloop // 
+(function () {
+  pokemonList.forEach(function(pokemon) {
+      let pokemonName = pokemon.name
+      let pokemonHeight = pokemon.height
+      // condition to add wow that's big if height is greater than 7
+      if(pokemonHeight > 5) {
+          document.write(pokemonName + ' : '+ pokemonHeight + ' - Wow, thats big!'); 
+      } else {
+          document.write(pokemonName + ' : '+ pokemonHeight); 
+      }
+          document.write('<br>');
+      });
+})();
