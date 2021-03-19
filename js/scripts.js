@@ -12,11 +12,21 @@ let pokemonRepository = (function () {
     getAll: function() {
       return pokemonList;
     }    
+    
   };
 })();
 
-pokemonRepository.getAll().forEach(function() {  
-
+pokemonRepository.getAll().forEach(function(pokemon) {  
+  
+  let pokemonName = pokemon.name
+  let pokemonHeight = pokemon.height
+  if (pokemonHeight >5) {
+    document.write (pokemonName +'  :  ' + pokemonHeight + '  wow,thats big!'  );
+  } else{
+    document.write(pokemonName + '  :  '+ pokemonHeight);
+  }
+  document.write('<br>');
+  
 });
 
 
