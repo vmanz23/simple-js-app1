@@ -1,21 +1,20 @@
 let pokemonRepository = (function () {
-  function getAll(){
-    return pokemonList;
-  }
-  function add(pokemon) {
-    pokemonList.push(pokemon);
-  }
-return {
-  getAll: getAll,
-  add:add
-};
+  let pokemonList = [ { name: 'Gyrados', height: '6.5', types: ['flying', 'water']}, 
+  { name: 'Mewtwo', height: '2', types: ['psychic']}, 
+  { name: 'Scyther', height: '1.5', types: ['bug', 'flying']}, 
+];
+
+  return {
+    add: function(pokemon) {
+      pokemonList.push(pokemon);
+    },
+    getAll: function() {
+      return pokemonList;
+    }
+  };
 })();
 
-  let pokemonList = [  {name: "Gryados", height: 6.5, type: "flying,water"},
-  {name: "Mewtwo", height: 2, type: "psychic"},
-  {name: "Scyther", height:1.5, type:"bug, flying"}]; 
-
-  pokemonList.forEach(function(pokemon) {
+pokemonList.forEach(function(pokemon) {
   let pokemonName = pokemon.name
   let pokemonHeight = pokemon.height
   if (pokemonHeight >5) {
@@ -29,5 +28,8 @@ return {
   console.log(pokemonRepository.getAll() );
 
 
+
+
+  
   
   
