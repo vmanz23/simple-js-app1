@@ -36,7 +36,6 @@ let pokemonRepository = (function () {
     let pkImg = document.createElement('img');
     pkImg.src = pokemon.imageUrl;
     modal.appendChild(pkImg);
-    modal.appendChild(cotain)
 
     modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible');
