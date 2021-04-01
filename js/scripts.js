@@ -1,5 +1,3 @@
-//IIFE
-
 let pokemonRepository = (function () {
   
   let modalContainer = document.querySelector 
@@ -59,6 +57,11 @@ let pokemonRepository = (function () {
     }
   });
 
+  document.querySelector('#show-modal').addEventListener('click', () => {
+    showModal('Modal title', 'This is the modal content!');
+  });
+
+
 
 //DOM List function
 function addListItem(pokemon){
@@ -82,7 +85,7 @@ function addListItem(pokemon){
 // function for console showModal
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function(){
-      showModal(pokemon);
+      showModal();
     });
   }
 
