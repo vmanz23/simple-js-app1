@@ -16,10 +16,10 @@ let pokemonRepository = (function(){
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
-    
-
-    modalContainer.appendChild(modal);
+     modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible'); 
+
+    
     let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
