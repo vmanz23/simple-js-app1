@@ -19,8 +19,8 @@ let pokemonRepository = (function(){
      modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible'); 
 
-
-    let closeButtonElement = document.createElement('button-close-modal');
+    
+    let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', hideModal);
@@ -51,7 +51,22 @@ function hideModal() {
   
 }
 
+document.addEventListener(
+  "click",
+  function(event) {
+  
+    if (
+      event.target.matches(".button-modal-close") 
+    ) {
+      closeModal()
+    }
+  },
+  false
+)
 
+function closeModal() {
+  document.querySelector(".modal").style.display = "none"
+}
   window.addEventListener('keydown', (e) => {
   let modalContainer = document.querySelector('#modal-container');
   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
