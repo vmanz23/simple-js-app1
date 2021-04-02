@@ -7,6 +7,8 @@ let pokemonRepository = (function(){
   let pokemonList = [];
  // API variable 
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
+  
  
   // function showmodal
   function showModal(pokemon) {
@@ -14,7 +16,17 @@ let pokemonRepository = (function(){
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
+    
 
+    modalContainer.appendChild(modal);
+    modalContainer.classList.add('is-visible'); 
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.innerText = 'Close';
+    closeButtonElement.addEventListener('click', hideModal);
+
+    
+    
     let pkName = document.createElement('h1');
     pkName.innerText = pokemon.name;
     modal.appendChild(pkName);
@@ -31,8 +43,30 @@ let pokemonRepository = (function(){
     modal.appendChild(pkImg);
 
 
-    modalContainer.appendChild(modal);
-    modalContainer.classList.add('is-visible'); 
+
+
+function hideModal() {
+  let modalContainer = document.querySelector('#modal-container');
+  modalContainer.classList.remove('is-visible');
+  
+}
+
+
+  window.addEventListener('keydown', (e) => {
+  let modalContainer = document.querySelector('#modal-container');
+  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+    hideModal();  
+
+    modalContainer.addEventListener('click', (e) => {
+  // Since this is also triggered when clicking INSIDE the modal
+  // We only want to close if the user clicks directly on the overlay
+  let target = e.target;
+  if (target === modalContainer) {
+    hideModal();
+  }
+});
+  }
+});
   }
 
 //function addlist
@@ -40,6 +74,7 @@ let pokemonRepository = (function(){
   let pkList = document.querySelector('.pokemon-list');
   let listItem = document.createElement('li');
   let button = document.createElement('button');
+
   
   button.innerText = pokemon.name;
   button.classList.add('button-class');
@@ -111,7 +146,8 @@ function loadDetails(item){
     getAll: getAll,
     loadList: loadList,
     loadDetails: loadDetails,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showModal: showModal
   };
     })();
  
