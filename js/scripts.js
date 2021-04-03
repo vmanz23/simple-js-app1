@@ -17,6 +17,7 @@ let pokemonRepository = (function(){
   document.querySelector(".modal").style.display = "none"
 
 }
+
 document.addEventListener(
   "click",
   function(event) {
@@ -33,7 +34,7 @@ document.addEventListener(
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
-     modalContainer.appendChild(modal);
+    modalContainer.appendChild(modal);
     modalContainer.classList.add('is-visible'); 
 
     
@@ -41,6 +42,9 @@ document.addEventListener(
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', closeModal);
+        
+
+
 
     
     
@@ -65,10 +69,7 @@ document.addEventListener(
   modalContainer.appendChild(modal);
  
 
-function hideModal() {
-  let modalContainer = document.querySelector('#modal-container');
-  modalContainer.classList.remove('is-visible');
-}
+
   window.addEventListener('keydown', (e) => {
   let modalContainer = document.querySelector('#modal-container');
   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
@@ -87,6 +88,7 @@ function hideModal() {
   }
 });
   }
+
 
 //function addlist
   function addListItem(pokemon){
