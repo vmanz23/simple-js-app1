@@ -12,6 +12,21 @@ let pokemonRepository = (function(){
  
   // function showmodal
   function showModal(pokemon) {
+    function closeModal() {
+  document.querySelector(".modal").style.display = "none"
+}
+document.addEventListener(
+  "click",
+  function(event) {
+  
+    if (
+      event.target.matches(".button-modal-close") 
+    ) {
+      closeModal()
+    }
+  },
+  false
+)
     
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
@@ -48,29 +63,11 @@ let pokemonRepository = (function(){
 function hideModal() {
   let modalContainer = document.querySelector('#modal-container');
   modalContainer.classList.remove('is-visible');
-  
-}
-
-document.addEventListener(
-  "click",
-  function(event) {
-  
-    if (
-      event.target.matches(".button-modal-close") 
-    ) {
-      closeModal()
-    }
-  },
-  false
-)
-
-function closeModal() {
-  document.querySelector(".modal").style.display = "none"
 }
   window.addEventListener('keydown', (e) => {
   let modalContainer = document.querySelector('#modal-container');
   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    hideModal();  
+    closeModal();  
 
     modalContainer.addEventListener('click', (e) => {
   // Since this is also triggered when clicking INSIDE the modal
