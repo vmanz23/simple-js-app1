@@ -8,11 +8,14 @@ let pokemonRepository = (function(){
  // API variable 
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
+
  
   // function showmodal
   function showModal(pokemon) {
+
     function closeModal() {
   document.querySelector(".modal").style.display = "none"
+
 }
 document.addEventListener(
   "click",
@@ -37,7 +40,7 @@ document.addEventListener(
     let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
-    closeButtonElement.addEventListener('click', hideModal);
+    closeButtonElement.addEventListener('click', closeModal);
 
     
     
@@ -58,6 +61,9 @@ document.addEventListener(
 
 
 
+  modal.appendChild(closeButtonElement);
+  modalContainer.appendChild(modal);
+ 
 
 function hideModal() {
   let modalContainer = document.querySelector('#modal-container');
@@ -68,12 +74,14 @@ function hideModal() {
   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
     closeModal();  
 
+
     modalContainer.addEventListener('click', (e) => {
   // Since this is also triggered when clicking INSIDE the modal
   // We only want to close if the user clicks directly on the overlay
   let target = e.target;
   if (target === modalContainer) {
-    hideModal();
+    closeModal();
+
   }
 });
   }
@@ -86,10 +94,10 @@ function hideModal() {
   let listItem = document.createElement('li');
   let button = document.createElement('button');
 
-  
   button.innerText = pokemon.name;
   button.classList.add('button-class');
-  
+    
+    
   listItem.appendChild(button);
   pkList.appendChild(listItem);
   
