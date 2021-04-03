@@ -8,7 +8,6 @@ let pokemonRepository = (function(){
  // API variable 
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-  
  
   // function showmodal
   function showModal(pokemon) {
