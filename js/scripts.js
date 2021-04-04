@@ -18,19 +18,6 @@ let pokemonRepository = (function(){
 
 }
 
-document.addEventListener(
-  "click",
-  function(event) {
-  
-    if (
-      event.target.matches(".button-modal-close") 
-    ) {
-      closeModal()
-    }
-  },
-  false
-)
-    
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
@@ -42,9 +29,6 @@ document.addEventListener(
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', closeModal);
-        
-
-
 
     
     
