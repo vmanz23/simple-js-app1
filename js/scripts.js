@@ -18,17 +18,20 @@ let pokemonRepository = (function(){
 
 }
 
+
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
     modalContainer.appendChild(modal);
-    modalContainer.classList.add('is-visible'); 
 
     
     let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', closeModal);
+        
+
+
 
     
     
@@ -53,13 +56,13 @@ let pokemonRepository = (function(){
   modalContainer.appendChild(modal);
  
 
-
+// escape click
   window.addEventListener('keydown', (e) => {
   let modalContainer = document.querySelector('#modal-container');
-  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+  if (e.key === 'Escape') {
     closeModal();  
 
-
+//outside click
     modalContainer.addEventListener('click', (e) => {
   // Since this is also triggered when clicking INSIDE the modal
   // We only want to close if the user clicks directly on the overlay
