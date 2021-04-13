@@ -44,6 +44,7 @@ function loadList() {
       let pokemon = {
         name: item.name,
         detailsUrl: item.url,
+       
       };
       add(pokemon);
     });
@@ -58,10 +59,18 @@ function loadDetails(item) {
   return fetch(url).then(function (response){
     return response.json();
   }).then(function (details){
-    item.imageUrl = details.sprites.front_default;
+    item.imageUrlFront = details.sprites.other.dream_world.front_default;
     item.height = details.height;
     item.weight = details.weight;
-    item.types = details.types;
+    item.types = [];
+        details.types.forEach(function(itemType) {
+          item.types.push(itemType.type.name);
+        });
+        item.abilities = [];
+        details.abilities.forEach(function(itemAbilities) {
+          item.abilities.push(itemAbilities.ability.name);
+        });
+      
   }).catch(function(e){
     console.error(e);
   });
@@ -80,10 +89,11 @@ loadDetails(pokemon).then(function () {
 
   let pkName = $('<h1>' + pokemon.name + '</h1>');
   let pkImage = $('<img class="modal-img" style="width:60%">');
-  pkImage.attr('src', pokemon.imageUrl);
+  pkImage.attr('src', pokemon.imageUrlFront);
   let pkHeight = $('<p>' + 'Height   : ' + pokemon.height + '</p>');
   let pkWeight = $('<p>' + 'Weight   : ' + pokemon.weight + '</p>');
-  let pkTypes = $('<p>' + 'Types   : ' + pokemon.types + '</p>');
+  let pkTypes = $('<p>' + 'Types      : ' + pokemon.types + '</p>');
+  let pkAbilities =$('<p>' + 'Abilities    : ' + pokemon.abilities + '</p>');
 
 
   modalTitle.append(pkName);
@@ -91,7 +101,7 @@ loadDetails(pokemon).then(function () {
   modalBody.append(pkHeight);
   modalBody.append(pkWeight);
   modalBody.append(pkTypes);
-
+  modalBody.append(pkAbilities);
 });
 }
 
