@@ -83,11 +83,15 @@ loadDetails(pokemon).then(function () {
   pkImage.attr('src', pokemon.imageUrl);
   let pkHeight = $('<p>' + 'Height   : ' + pokemon.height + '</p>');
   let pkWeight = $('<p>' + 'Weight   : ' + pokemon.weight + '</p>');
+  let pkTypes = $('<p>' + 'Types   : ' + pokemon.types + '</p>');
+
 
   modalTitle.append(pkName);
   modalBody.append(pkImage);
   modalBody.append(pkHeight);
   modalBody.append(pkWeight);
+  modalBody.append(pkTypes);
+
 });
 }
 
